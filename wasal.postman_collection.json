@@ -1,0 +1,54 @@
+{
+  "info": {
+    "name": "Wasal API — أمثلة قراءة الحوالات",
+    "description": "أمثلة لواجهة وصل المستقلة غير الرسمية. لا ترسل الأموال. يلزم حساب واشتراك وربط متحقق قبل استخدام مفتاح حقيقي. لا تنشر مفتاحك ضمن المجموعة المشتركة. الدليل: https://wasalnow.com/sham-cash-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{api_key}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "api_key",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "حالة الحساب وآخر مزامنة",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "https://wasalnow.com/api/v1/account",
+        "description": "حالة ربط الحساب. الطلب للقراءة فقط."
+      }
+    },
+    {
+      "name": "الحوالات — أول 25 نتيجة",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "https://wasalnow.com/api/v1/payments?limit=25",
+        "description": "افحص sync.stale وsync.error. الاستجابة القديمة أو الفاشلة لا تثبت غياب حوالات جديدة. next_cursor غير الفارغ يعني وجود صفحة تالية."
+      }
+    }
+  ]
+}
